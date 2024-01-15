@@ -1,0 +1,8 @@
+int ma = 0;
+int largest_subtree_sum (Node* root){
+	if(!root) return 0;
+	int l = largest_subtree_sum(root->left);
+	int r = largest_subtree_sum(root->right);
+	ma = max(ma,l+r+root->data);
+	return l+r+root->data;
+}

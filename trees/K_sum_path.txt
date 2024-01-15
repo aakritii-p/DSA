@@ -1,0 +1,26 @@
+
+void func(Node* root, vector<int>&path,int K)
+{
+	if(!root) return;
+	path.push_back(root->data);
+	func(root->left,path,K);
+	func(root->right,path,K);
+
+	int sum = 0;
+	for(int j=path.size();j>=0;j--)
+	{
+		sum+=path[j];
+		if(sum == K) {
+			for(int i=j;i<path.size();i++){
+				cout<<path[i]<<" ";
+			}
+			cout<<endl;
+		}
+	}
+	path.pop_back();
+}
+
+int main(){
+	vector<int>path;
+	func(root,path,K);
+}
